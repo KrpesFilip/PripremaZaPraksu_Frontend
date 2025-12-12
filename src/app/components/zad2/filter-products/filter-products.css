@@ -1,0 +1,29 @@
+.task-text{
+    text-align: center;
+    text-decoration: underline;
+}
+
+.filter-container {
+  text-align: left;
+  width: 300px;
+  margin: 20px auto;
+  
+}
+
+
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+}
+
+ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+li {
+  padding: 6px 0;
+  border-bottom: 1px solid #ddd;
+}

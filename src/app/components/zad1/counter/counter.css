@@ -1,0 +1,16 @@
+.counter-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.task-tekst{
+    text-align: center;
+    text-decoration: underline;
+}
+
+button {
+  margin: 5px;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+}

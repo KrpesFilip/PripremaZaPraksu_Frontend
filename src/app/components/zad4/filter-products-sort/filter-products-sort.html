@@ -1,0 +1,48 @@
+<div class="filter-container">
+  <h2 class="task-text">Task 4</h2>
+
+  <input
+    type="text"
+    placeholder="Search products"
+    [(ngModel)]="searchText"
+    (ngModelChange)="applyFilters()"
+  />
+
+  <select [(ngModel)]="selectedCategory" (change)="applyFilters()">
+    <option value="">All Categories</option>
+    <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
+  </select>
+
+  <input
+    type="number"
+    placeholder="Min price"
+    [(ngModel)]="minPrice"
+    (ngModelChange)="applyFilters()"
+  />
+
+  <input
+    type="number"
+    placeholder="Max price"
+    [(ngModel)]="maxPrice"
+    (ngModelChange)="applyFilters()"
+  />
+
+  <select [(ngModel)]="sortOption" (change)="applyFilters()">
+    <option value="">Sort By</option>
+    <option value="name-asc">Name (A-Z)</option>
+    <option value="name-desc">Name (Z-A)</option>
+    <option value="price-asc">Price (Low-High)</option>
+    <option value="price-desc">Price (High-Low)</option>
+  </select>
+
+  <ul *ngIf="filteredProducts.length > 0; else noResults">
+    <li *ngFor="let product of filteredProducts">
+      {{ product.name }} - {{ product.category }} - ${{ product.price }}
+    </li>
+  </ul>
+
+  <ng-template #noResults>
+    <p>No products to display.</p>
+  </ng-template>
+</div>
+

@@ -1,0 +1,22 @@
+<div class="filter-container">
+
+  <h2 class="task-text">Task 2</h2>
+
+  <input 
+    type="text" 
+    placeholder="Search products..."
+    [(ngModel)]="searchText"
+  />
+
+  <ul *ngIf="filteredProducts.length > 0; else noResults">
+    <li *ngFor="let product of filteredProducts">
+      <strong>{{ product.name }}</strong> — {{ product.category }} — ${{ product.price }}
+    </li>
+  </ul>
+
+  <ng-template #noResults>
+    <p>No products to display.</p>
+  </ng-template>
+
+</div>
+

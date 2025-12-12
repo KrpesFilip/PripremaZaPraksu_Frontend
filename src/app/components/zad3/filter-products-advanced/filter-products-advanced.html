@@ -1,0 +1,25 @@
+<div class="filter-container">
+  <h2 class="task-text">Task 3</h2>
+    <input
+    type="text"
+    placeholder="Search products"
+    [(ngModel)]="searchText"
+    (ngModelChange)="filterProducts()"
+  />
+
+  <select [(ngModel)]="selectedCategory" (ngModelChange)="filterProducts()">
+    <option value="">All categories</option>
+    <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
+  </select>
+
+  <ul *ngIf="filteredProducts.length > 0; else noResults">
+    <li *ngFor="let product of filteredProducts">
+      {{ product.name }} - {{ product.category }} - ${{ product.price }}
+    </li>
+  </ul>
+
+  <ng-template #noResults>
+    <p>Nema proizvoda za prikaz.</p>
+  </ng-template>
+</div>
+
