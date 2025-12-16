@@ -1,0 +1,54 @@
+<h2>User Management</h2>
+
+<form [formGroup]="userForm" (ngSubmit)="submit()">
+  <label>Name:</label>
+  <input formControlName="name">
+  <div *ngIf="userForm.get('name')?.touched && userForm.get('name')?.invalid">
+    <small *ngIf="userForm.get('name')?.errors?.['required']">Name is required.</small>
+    <small *ngIf="userForm.get('name')?.errors?.['minlength']">Name must be at least 3 characters.</small>
+  </div>
+
+  <label>Email:</label>
+  <input formControlName="email">
+  <div *ngIf="userForm.get('email')?.touched && userForm.get('email')?.invalid">
+    <small *ngIf="userForm.get('email')?.errors?.['required']">Email is required.</small>
+    <small *ngIf="userForm.get('email')?.errors?.['email']">Invalid email.</small>
+  </div>
+
+  <label>Phone:</label>
+  <input formControlName="phone">
+
+  <button type="submit">Submit</button>
+</form>
+
+<h3>Users</h3>
+
+
+<input [(ngModel)]="filterText" placeholder="Filter by name or email">
+
+
+<select [(ngModel)]="sortOption">
+  <option value="name-asc">Name A-Z</option>
+  <option value="name-desc">Name Z-A</option>
+  <option value="email-asc">Email A-Z</option>
+  <option value="email-desc">Email Z-A</option>
+</select>
+
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of filteredUsers">
+     <td>{{ user.name }}</td>
+     <td>{{ user.email }}</td>
+     <td>{{ user.phone }}</td>
+</tr>
+  </tbody>
+</table>
+
